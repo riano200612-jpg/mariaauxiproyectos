@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>María Auxi · Líder de Proyectos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:   #FAF7F4;
+  --cream2:  #F5F0EC;
+  --white:   #FFFFFF;
+  --rose:    #C4969A;
+  --rose-lt: #D9B8BB;
+  --rose-dk: #A87B7F;
+  --mauve:   #8C6D70;
+  --text:    #2A1E20;
+  --text-lt: #8B6B78;
+  --border:  rgba(196,150,154,0.18);
+  --f-serif: 'Cormorant Garamond', serif;
+  --f-sans:  'Jost', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--f-sans);
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CURSOR ── */
+#cur  { position:fixed; width:7px; height:7px; background:var(--rose); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition: width .3s, height .3s; }
+#cur-r{ position:fixed; width:34px; height:34px; border:1px solid rgba(196,150,154,0.5); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition: all .15s ease-out; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  padding: 2.2rem 5rem;
+  display: flex; justify-content:space-between; align-items:center;
+  transition: background .5s, border-color .5s;
+}
+.nav-logo {
+  font-family: var(--f-serif);
+  font-size: 1.05rem; font-weight:300; letter-spacing:.18em;
+  color: var(--text); text-decoration:none;
+}
+.nav-logo em { font-style:italic; color:var(--rose); }
+.nav-links { display:flex; gap:2.8rem; list-style:none; }
+.nav-links a {
+  font-size:.6rem; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--text-lt); text-decoration:none; transition:color .3s;
+}
+.nav-links a:hover { color:var(--rose); }
+.nav-cta {
+  font-family:var(--f-sans); font-size:.58rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--rose);
+  border:1px solid var(--rose-lt); padding:.65rem 1.7rem;
+  background:transparent; cursor:none; transition:all .4s;
+}
+.nav-cta:hover { background:var(--rose); color:var(--white); border-color:var(--rose); }
+
+/* ── HERO ── */
+#hero {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft background wash */
+#hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 80% at 75% 35%, rgba(217,184,187,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 20% 70%, rgba(196,150,154,0.1) 0%, transparent 60%);
+}
+
+/* Thin decorative vertical line */
+.hero-line {
+  position:absolute; top:0; left:50%;
+  width:1px; height:100%;
+  background: linear-gradient(to bottom, transparent, rgba(196,150,154,0.15), transparent);
+}
+
+.hero-left { position:relative; z-index:2; }
+
+.hero-eyebrow {
+  font-size:.56rem; letter-spacing:.45em; text-transform:uppercase;
+  color:var(--rose); margin-bottom:2.5rem;
+  opacity:0; animation: fadeUp .9s ease .3s forwards;
+}
+
+.hero-title {
+  font-family:var(--f-serif);
+  font-size: clamp(3.2rem, 6vw, 5.8rem);
+  font-weight:300; line-height:.98; letter-spacing:-.01em;
+  margin-bottom:2.2rem;
+  opacity:0; animation: fadeUp 1.1s ease .5s forwards;
+}
+.hero-title em { font-style:italic; color:var(--rose-lt); display:block; }
+
+.hero-sub {
+  font-size:.72rem; line-height:2; color:var(--text-lt);
+  max-width:360px; margin-bottom:3.5rem;
+  opacity:0; animation: fadeUp .9s ease .75s forwards;
+}
+
+.hero-actions {
+  display:flex; align-items:center; gap:2.5rem;
+  opacity:0; animation: fadeUp .9s ease .95s forwards;
+}
+.btn-p {
+  font-family:var(--f-sans); font-size:.58rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--white);
+  background:var(--rose); border:none;
+  padding:1rem 2.6rem; cursor:none; text-decoration:none;
+  display:inline-block; transition:background .4s;
+}
+.btn-p:hover { background:var(--mauve); }
+.btn-g {
+  font-size:.58rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--text-lt); text-decoration:none; display:flex;
+  align-items:center; gap:.8rem; transition:color .3s;
+}
+.btn-g::after { content:''; width:30px; height:1px; background:currentColor; transition:width .3s; }
+.btn-g:hover { color:var(--rose); }
+.btn-g:hover::after { width:55px; }
+
+/* Hero right — contact card */
+.hero-right {
+  position:relative; z-index:2;
+  display:flex; flex-direction:column; align-items:flex-end; gap:1.5rem;
+}
+
+.contact-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:2.8rem 3rem;
+  width:320px;
+  opacity:0; animation: fadeUp 1s ease 1.1s forwards;
+  box-shadow: 0 4px 40px rgba(138,109,112,0.08);
+}
+.cc-label {
+  font-size:.52rem; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--rose); margin-bottom:1.6rem;
+  display:flex; align-items:center; gap:.8rem;
+}
+.cc-label::after { content:''; flex:1; height:1px; background:var(--border); }
+.cc-name {
+  font-family:var(--f-serif);
+  font-size:2.2rem; font-weight:300; font-style:italic;
+  color:var(--text); line-height:1.1; margin-bottom:.3rem;
+}
+.cc-role {
+  font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--text-lt); padding-bottom:1.6rem;
+  border-bottom:1px solid var(--border); margin-bottom:1.6rem;
+}
+.cc-phone {
+  display:flex; align-items:center; gap:.7rem;
+  font-size:.88rem; font-weight:300; letter-spacing:.04em;
+  color:var(--rose); text-decoration:none; transition:color .3s;
+}
+.cc-phone:hover { color:var(--mauve); }
+
+/* Scroll indicator */
+.hero-scroll {
+  position:absolute; bottom:2.5rem; left:5rem; z-index:2;
+  display:flex; align-items:center; gap:1rem;
+  opacity:0; animation: fadeUp .9s ease 1.4s forwards;
+}
+.hero-scroll span {
+  font-size:.52rem; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--rose-lt);
+}
+.scroll-bar { width:40px; height:1px; background:var(--rose-lt); position:relative; overflow:hidden; }
+.scroll-bar::after {
+  content:''; position:absolute; top:0; left:-100%;
+  width:100%; height:100%; background:var(--rose);
+  animation: scrollBar 2.2s ease-in-out infinite;
+}
+@keyframes scrollBar { 0%{left:-100%} 100%{left:100%} }
+
+/* ── STATS ── */
+.stats {
+  background:var(--white);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:3rem 5rem;
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+.stat {
+  padding:0 2.5rem;
+  border-right:1px solid var(--border);
+}
+.stat:first-child { padding-left:0; }
+.stat:last-child  { border-right:none; }
+.stat-n {
+  font-family:var(--f-serif);
+  font-size:2.6rem; font-weight:300; color:var(--rose);
+  letter-spacing:-.01em; line-height:1; margin-bottom:.5rem;
+}
+.stat-l {
+  font-size:.55rem; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--text-lt);
+}
+
+/* ── MANIFESTO ── */
+#manifesto {
+  padding:9rem 5rem;
+  max-width:1100px; margin:0 auto;
+}
+.tag {
+  font-size:.55rem; letter-spacing:.45em; text-transform:uppercase;
+  color:var(--rose); margin-bottom:3rem; display:block;
+}
+.manifesto-text {
+  font-family:var(--f-serif);
+  font-size:clamp(1.8rem, 3.2vw, 3rem);
+  font-weight:300; line-height:1.45;
+  color:var(--text);
+}
+.manifesto-text em { font-style:italic; color:var(--rose-lt); }
+
+.manifesto-foot {
+  margin-top:4rem;
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem;
+  padding-top:3rem; border-top:1px solid var(--border);
+}
+.manifesto-foot p {
+  font-size:.72rem; line-height:2; color:var(--text-lt);
+}
+
+/* ── PROYECTOS ── */
+#proyectos { padding:3rem 5rem 8rem; }
+
+.sec-head {
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-bottom:4rem;
+}
+.sec-title {
+  font-family:var(--f-serif);
+  font-size:clamp(2.2rem,3.5vw,3.4rem);
+  font-weight:300; letter-spacing:-.01em;
+}
+.sec-title em { font-style:italic; color:var(--rose-lt); }
+.sec-link {
+  font-size:.55rem; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--text-lt); text-decoration:none; transition:color .3s;
+}
+.sec-link:hover { color:var(--rose); }
+
+/* Grid */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:14px;
+}
+
+/* Cards */
+.card {
+  background:var(--white);
+  border:1px solid var(--border);
+  overflow:hidden; position:relative;
+  transition:border-color .4s, box-shadow .4s;
+  cursor:none;
+}
+.card:hover {
+  border-color:rgba(196,150,154,0.4);
+  box-shadow:0 8px 40px rgba(138,109,112,0.09);
+}
+
+.c-xl    { grid-column:span 7; min-height:500px; }
+.c-lg    { grid-column:span 5; min-height:240px; }
+.c-md    { grid-column:span 4; min-height:270px; }
+.c-sm    { grid-column:span 3; min-height:210px; }
+.c-wide  { grid-column:span 8; min-height:190px; }
+.c-fill  { grid-column:span 4; min-height:190px; }
+
+/* Card swatch — soft background per project */
+.swatch {
+  position:absolute; inset:0;
+  transition:transform .6s ease;
+}
+.card:hover .swatch { transform:scale(1.02); }
+
+.s-kairos    { background: linear-gradient(145deg,#F2E8E6,#EDD9D6,#F4ECEB); }
+.s-crystal   { background: linear-gradient(145deg,#EDE6E8,#E4D8DC,#EDE3E5); }
+.s-terra     { background: linear-gradient(145deg,#EDE8E4,#E4DEDA,#EEE9E6); }
+.s-bari      { background: linear-gradient(145deg,#E8ECEB,#DEE5E3,#E8EDEC); }
+.s-zinnia    { background: linear-gradient(145deg,#E8EAE4,#DDE1D8,#E8EADF); }
+.s-reserva   { background: linear-gradient(145deg,#EDEAE4,#E4E0D8,#EDEBE5); }
+.s-entre     { background: linear-gradient(145deg,#E4E8EC,#D8E0E6,#E3E8EE); }
+
+/* Soft orb per card */
+.orb {
+  position:absolute; border-radius:50%;
+  filter:blur(70px); opacity:.45;
+  animation: orbFloat 10s ease-in-out infinite alternate;
+}
+@keyframes orbFloat {
+  from { transform:translate(0,0) scale(1); }
+  to   { transform:translate(8px,-12px) scale(1.06); }
+}
+.s-kairos  .orb { background:#D4ABAE; width:220px; height:220px; top:-60px; right:-40px; }
+.s-crystal .orb { background:#C8A8B0; width:260px; height:260px; top:-70px; right:-50px; }
+.s-terra   .orb { background:#C8B8A8; width:200px; height:200px; top:20px;  left:-30px; }
+.s-bari    .orb { background:#A8B8B4; width:240px; height:240px; bottom:-50px; right:-40px; }
+.s-zinnia  .orb { background:#B0BC9C; width:200px; height:200px; top:-40px; left:40%; }
+.s-reserva .orb { background:#C0B8A4; width:180px; height:180px; bottom:-20px; left:-20px; }
+.s-entre   .orb { background:#A8B8C8; width:200px; height:200px; top:-30px; right:20px; }
+
+/* Card inner */
+.card-in {
+  position:relative; z-index:2;
+  height:100%; min-height:inherit;
+  display:flex; flex-direction:column;
+  justify-content:flex-end; padding:2rem;
+}
+
+/* Status pill */
+.pill {
+  position:absolute; top:1.6rem; right:1.6rem; z-index:3;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(196,150,154,0.2);
+  padding:.4rem 1rem;
+  font-size:.5rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--mauve);
+}
+
+.c-tag  {
+  font-size:.5rem; letter-spacing:.38em; text-transform:uppercase;
+  color:var(--rose); margin-bottom:.65rem; display:block;
+}
+.c-name {
+  font-family:var(--f-serif);
+  font-size:clamp(1.4rem,2.2vw,2.2rem);
+  font-weight:300; line-height:1.1; margin-bottom:.6rem;
+}
+.c-name em { font-style:italic; color:var(--rose-lt); }
+.c-desc {
+  font-size:.65rem; line-height:1.85;
+  color:var(--text-lt); margin-bottom:1.2rem;
+}
+.c-foot {
+  display:flex; align-items:center; gap:1.5rem;
+}
+.c-price {
+  font-family:var(--f-serif);
+  font-size:1.1rem; color:var(--rose);
+}
+.c-loc {
+  font-size:.52rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--text-lt); flex:1;
+}
+.c-arr {
+  width:34px; height:34px;
+  border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--rose-lt); font-size:.9rem;
+  transition:all .3s;
+}
+.card:hover .c-arr {
+  background:var(--rose); color:var(--white); border-color:var(--rose);
+}
+
+/* amenities */
+.amen {
+  display:flex; flex-wrap:wrap; gap:.5rem .9rem;
+  margin-bottom:1.2rem;
+}
+.amen span {
+  font-size:.55rem; letter-spacing:.12em;
+  color:var(--text-lt);
+  display:flex; align-items:center; gap:.4rem;
+}
+.amen span::before {
+  content:'·'; color:var(--rose-lt); font-size:1rem; line-height:0;
+}
+
+/* ── QUOTE DIVIDER ── */
+.quote-divider {
+  background:var(--white);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:7rem 5rem;
+  text-align:center;
+}
+.quote-divider blockquote {
+  font-family:var(--f-serif);
+  font-size:clamp(1.8rem,3.2vw,3rem);
+  font-weight:300; font-style:italic;
+  line-height:1.45; max-width:750px; margin:0 auto 1.2rem;
+}
+.quote-divider blockquote em { font-style:normal; color:var(--rose); }
+.quote-src {
+  font-size:.55rem; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--text-lt);
+}
+
+/* ── TECNOLOGÍA ── */
+#tecnologia {
+  padding:8rem 5rem;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:7rem; align-items:center;
+  max-width:1350px; margin:0 auto;
+}
+.metrics {
+  display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  border:1px solid var(--border);
+  margin-top:3rem;
+  background:var(--border);
+}
+.metric {
+  background:var(--white); padding:2rem 1.8rem;
+}
+.metric-v {
+  font-family:var(--f-serif);
+  font-size:2rem; color:var(--rose);
+  display:block; margin-bottom:.3rem;
+}
+.metric-d {
+  font-size:.58rem; letter-spacing:.12em;
+  color:var(--text-lt); line-height:1.7;
+}
+
+/* AI diagram */
+.ai-box {
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:2.5rem;
+  display:flex; flex-direction:column; gap:0;
+}
+.ai-row {
+  padding:1.5rem 0;
+  border-bottom:1px solid var(--border);
+}
+.ai-row:last-child { border-bottom:none; }
+.ai-node {
+  font-size:.55rem; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--rose); margin-bottom:.4rem;
+}
+.ai-desc {
+  font-size:.68rem; line-height:1.8; color:var(--text-lt);
+}
+.ai-status {
+  display:flex; align-items:center; gap:.6rem;
+  font-size:.52rem; letter-spacing:.2em;
+  text-transform:uppercase; color:#7BAE84; margin-top:1rem;
+}
+.ai-status::before {
+  content:''; width:5px; height:5px;
+  background:#7BAE84; border-radius:50%;
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+/* ── UBICACIONES ── */
+#ubicaciones {
+  background:var(--cream2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:7rem 5rem;
+}
+.ubic-inner {
+  max-width:1200px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:7rem; align-items:start;
+}
+.zones { list-style:none; margin-top:2rem; }
+.zone {
+  display:flex; align-items:center; gap:1.5rem;
+  padding:1.1rem 0; border-bottom:1px solid var(--border);
+  transition:border-color .3s; cursor:none;
+}
+.zone:hover { border-color:rgba(196,150,154,0.38); }
+.zone-dot {
+  width:6px; height:6px; flex-shrink:0;
+  background:var(--rose); border-radius:50%;
+}
+.zone-nm {
+  font-family:var(--f-serif);
+  font-size:1.05rem; font-weight:300; flex:1;
+}
+.zone-ct {
+  font-size:.52rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--rose-lt);
+}
+
+/* Map art */
+.map-art {
+  height:420px; background:var(--white);
+  border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.map-c {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(196,150,154,0.18);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+}
+.map-c:nth-child(1){width:55px;  height:55px;  border-color:rgba(196,150,154,.5);}
+.map-c:nth-child(2){width:110px; height:110px;}
+.map-c:nth-child(3){width:170px; height:170px;}
+.map-c:nth-child(4){width:230px; height:230px;}
+.map-c:nth-child(5){width:300px; height:300px; border-color:rgba(196,150,154,.06);}
+
+.map-pt {
+  position:absolute; width:7px; height:7px;
+  background:var(--rose); border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.map-pt::after {
+  content:''; position:absolute; inset:-6px;
+  border:1px solid rgba(196,150,154,.4); border-radius:50%;
+  animation:ptPulse 3.2s ease-in-out infinite;
+}
+@keyframes ptPulse { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:0;transform:scale(2.5)} }
+
+.map-lbl {
+  position:absolute;
+  font-size:.5rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--rose-lt);
+  white-space:nowrap;
+}
+.map-tag {
+  position:absolute; bottom:1.4rem; left:1.4rem;
+  font-size:.52rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--text-lt);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding:6rem 5rem 3rem;
+  border-top:1px solid var(--border);
+}
+.ft-grid {
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:4rem; margin-bottom:5rem;
+}
+.ft-brand {
+  font-family:var(--f-serif);
+  font-size:1.4rem; font-weight:300;
+  margin-bottom:1rem;
+}
+.ft-brand em { font-style:italic; color:var(--rose); }
+.ft-tagline {
+  font-size:.68rem; line-height:2;
+  color:var(--text-lt); max-width:250px; margin-bottom:2rem;
+}
+.ft-social { display:flex; gap:.8rem; }
+.soc {
+  width:34px; height:34px;
+  border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.62rem; color:var(--text-lt); text-decoration:none;
+  transition:all .3s;
+}
+.soc:hover { background:var(--rose); color:var(--white); border-color:var(--rose); }
+.ft-col-t {
+  font-size:.52rem; letter-spacing:.32em;
+  text-transform:uppercase; color:var(--rose); margin-bottom:1.5rem;
+}
+.ft-links { list-style:none; display:flex; flex-direction:column; gap:.75rem; }
+.ft-links a {
+  font-size:.7rem; color:var(--text-lt);
+  text-decoration:none; letter-spacing:.04em; transition:color .3s;
+}
+.ft-links a:hover { color:var(--rose); }
+.ft-bottom {
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:2rem; border-top:1px solid var(--border);
+}
+.ft-copy { font-size:.55rem; letter-spacing:.18em; color:var(--text-lt); opacity:.6; }
+.ft-badge {
+  font-size:.52rem; letter-spacing:.18em;
+  color:var(--rose-lt); border:1px solid var(--border); padding:.35rem .9rem;
+}
+
+/* ── UTILITIES ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.reveal { opacity:0; transform:translateY(36px); transition:opacity .95s ease, transform .95s ease; }
+.reveal.vis { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
+
+::-webkit-scrollbar { width:2px; }
+::-webkit-scrollbar-track { background:var(--cream); }
+::-webkit-scrollbar-thumb { background:var(--rose-lt); }
+
+/* Responsive */
+@media(max-width:900px){
+  nav { padding:1.5rem 2rem; }
+  .nav-links { display:none; }
+  #hero { grid-template-columns:1fr; padding:7rem 2rem 4rem; }
+  .hero-right { align-items:flex-start; }
+  .contact-card { width:100%; }
+  .stats { grid-template-columns:repeat(2,1fr); padding:2rem; gap:2rem; }
+  #manifesto { padding:5rem 2rem; }
+  .manifesto-foot { grid-template-columns:1fr; }
+  #proyectos { padding:2rem 2rem 5rem; }
+  .grid { grid-template-columns:repeat(6,1fr); }
+  .c-xl,.c-lg,.c-md,.c-sm,.c-wide,.c-fill { grid-column:span 6; }
+  #tecnologia { grid-template-columns:1fr; padding:5rem 2rem; gap:3rem; }
+  .ubic-inner { grid-template-columns:1fr; }
+  #ubicaciones { padding:5rem 2rem; }
+  .ft-grid { grid-template-columns:1fr 1fr; gap:2.5rem; }
+  .quote-divider { padding:5rem 2rem; }
+  footer { padding:4rem 2rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">María Auxi <em>·</em> Líder de Proyectos</a>
+  <ul class="nav-links">
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#ubicaciones">Ubicaciones</a></li>
+    <li><a href="#tecnologia">Tecnología</a></li>
+    <li><a href="#footer">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/573104325477" target="_blank" class="nav-cta">Agendar Visita</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-line"></div>
+
+  <div class="hero-left">
+    <p class="hero-eyebrow">Cartagena de Indias · Proyectos Residenciales</p>
+    <h1 class="hero-title">
+      Espacios que<br>
+      <em>elocuentes</em><br>
+      hablan solos
+    </h1>
+    <p class="hero-sub">
+      Portafolio de desarrollos residenciales de alto nivel en el corazón del Caribe colombiano.
+    </p>
+    <div class="hero-actions">
+      <a href="#proyectos" class="btn-p">Explorar portafolio</a>
+      <a href="#" class="btn-g">Recorrido virtual</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="contact-card">
+      <div class="cc-label">Líder de Proyectos</div>
+      <div class="cc-name">María Auxi</div>
+      <div class="cc-role">Líder de Proyectos</div>
+      <a href="tel:+573104325477" class="cc-phone">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.17 2 2 0 012.1.98h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +57 310 432 5477
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-bar"></div>
+    <span>Descender</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stat">
+    <div class="stat-n" data-target="7">7</div>
+    <div class="stat-l">Proyectos activos</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="25" data-suffix="+">25+</div>
+    <div class="stat-l">Años de trayectoria</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="1200" data-suffix="+">1.200+</div>
+    <div class="stat-l">Unidades entregadas</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="4">4</div>
+    <div class="stat-l">Zonas estratégicas</div>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <span class="tag reveal">— Nuestra filosofía</span>
+  <p class="manifesto-text reveal">
+    Construimos más que estructuras. Diseñamos los marcos <em>dentro de los cuales la vida encuentra su más alta expresión.</em> Cada proyecto es una declaración silenciosa de permanencia, belleza y propósito.
+  </p>
+  <div class="manifesto-foot reveal">
+    <p>
+      En Mejía Villegas, la excelencia arquitectónica no es un resultado accidental — es el punto de partida inevitable de cada decisión que tomamos, desde la selección del terreno hasta el último detalle de acabados.
+    </p>
+    <p>
+      Cada espacio nace de una escucha profunda: a la topografía, al clima, a la cultura del Caribe y a quien habitará cada rincón. Construimos para generaciones.
+    </p>
+  </div>
+</section>
+
+<!-- OPORTO VIDEO -->
+<section id="oporto" style="padding:4rem 5rem 7rem;max-width:1200px;margin:0 auto;">
+  <div class="sec-head reveal">
+    <h2 class="sec-title">Proyecto <em>Oporto</em></h2>
+    <span class="sec-link" style="color:var(--rose-lt);font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;">Nuevo · 2026</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+    <!-- Video vertical Shorts -->
+    <div class="reveal" style="display:flex;justify-content:center;">
+      <div style="position:relative;width:300px;height:533px;overflow:hidden;box-shadow:0 20px 60px rgba(138,109,112,0.22);background:#1a1014;">
+        <iframe
+          src="https://www.youtube.com/embed/WIuWcVxwma0?autoplay=1&mute=1&loop=1&playlist=WIuWcVxwma0&controls=1"
+          title="Proyecto Oporto"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="width:100%;height:100%;display:block;">
+        </iframe>
+        <div style="position:absolute;top:1.2rem;right:1.2rem;background:rgba(196,150,154,0.15);backdrop-filter:blur(10px);border:1px solid rgba(196,150,154,0.3);padding:.35rem .9rem;pointer-events:none;">
+          <span style="font-size:.48rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,0.85);">Disponible</span>
+        </div>
+      </div>
+    </div>
+    <!-- Texto -->
+    <div class="reveal d2">
+      <span class="tag" style="margin-bottom:1.5rem;">— Nuevo Desarrollo</span>
+      <p style="font-family:var(--f-serif);font-size:clamp(1.5rem,2.5vw,2.4rem);font-weight:300;line-height:1.4;margin-bottom:2rem;color:var(--text);">
+        Una nueva forma de<br><em style="color:var(--rose-lt);font-style:italic;">vivir en Cartagena</em>
+      </p>
+      <p style="font-size:.72rem;line-height:2;color:var(--text-lt);margin-bottom:2.5rem;">
+        Oporto es la más reciente apuesta de Mejía Villegas Constructores — un proyecto que fusiona arquitectura contemporánea, ubicación estratégica y la esencia vibrante del Caribe colombiano en cada detalle.
+      </p>
+      <a href="https://wa.me/573104325477" target="_blank" class="btn-p" style="display:inline-block;">Más información</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="sec-head reveal">
+    <h2 class="sec-title">Portafolio <em>2026</em></h2>
+    <a href="#" class="sec-link">Ver todos →</a>
+  </div>
+
+  <div class="grid">
+
+    <!-- Mar de Kairos XL -->
+    <div class="card c-xl reveal">
+      <div class="swatch s-kairos"><div class="orb"></div></div>
+      <div class="pill">Disponible · Lotes</div>
+      <div class="card-in">
+        <span class="c-tag">Punta Canoa · Zona Norte</span>
+        <h3 class="c-name">Mar de <em>Kairos</em></h3>
+        <p class="c-desc">Lotes aterrazados frente al Mar Caribe con acceso exclusivo al Kairos Beach Club a 9 metros del agua. Una experiencia topográfica sin precedentes en la costa norte de Cartagena.</p>
+        <div class="c-foot">
+          <span class="c-price">Desde $250M COP</span>
+          <span class="c-loc">200m² · Mar Caribe</span>
+          <div class="c-arr">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crystal Bay -->
+    <div class="card c-lg reveal d1">
+      <div class="swatch s-crystal"><div class="orb"></div></div>
+      <div class="pill">25 Pisos · En venta</div>
+      <div class="card-in">
+        <span class="c-tag">Manga · Bahía de Cartagena</span>
+        <h3 class="c-name">Crystal Bay <em>Tower</em></h3>
+        <p class="c-desc">Vistas panorámicas absolutas sobre la bahía y la Avenida Miramar desde 25 pisos de elegancia contemporánea.</p>
+        <div class="c-foot">
+          <span class="c-loc">Manga, Cartagena</span>
+          <div class="c-arr">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terra -->
+    <div class="card c-lg reveal d2">
+      <div class="swatch s-terra"><div class="orb"></div></div>
+      <div class="pill">17 Pisos · 39 Apart.</div>
+      <div class="card-in">
+        <span class="c-tag">Manga · Alto nivel</span>
+        <h3 class="c-name">Terra <em>Club House</em></h3>
+        <p class="c-desc">Exclusividad absoluta. Solo 39 apartamentos en 17 pisos para quienes entienden que la verdadera escasez define el valor.</p>
+        <div class="c-foot">
+          <span class="c-loc">39 Unidades exclusivas</span>
+          <div class="c-arr">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bari -->
+    <div class="card c-md reveal">
+      <div class="swatch s-bari"><div class="orb"></div></div>
+      <div class="card-in">
+        <span class="c-tag">Manga · Familia</span>
+        <h3 class="c-name"><em>Bari</em> Club House</h3>
+        <div class="amen">
+          <span>Piscina adultos</span>
+          <span>Zona BBQ</span>
+          <span>Gimnasio</span>
+          <span>Coworking</span>
+          <span>Yoga</span>
+          <span>Mirador</span>
+        </div>
+        <div class="c-foot">
+          <span class="c-loc">25 Pisos · Manga</span>
+          <div class="c-arr">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zinnia -->
+    <div class="card c-sm reveal d1">
+      <div class="swatch s-zinnia"><div class="orb"></div></div>
+      <div class="pill">EDGE · Natural</div>
+      <div class="card-in">
+        <span class="c-tag">Serena del Mar</span>
+        <h3 class="c-name">Zinnia <em>Club House</em></h3>
+        <p class="c-desc">14 torres en reserva natural. Lagos y senderos que respetan el ecosistema.</p>
+        <div class="c-foot">
+          <span class="c-loc">336 Apartamentos</span>
+          <div class="c-arr">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entrelagos -->
+    <div class="card c-fill reveal d2">
+      <div class="swatch s-entre"><div class="orb"></div></div>
+      <div class="card-in">
+        <span class="c-tag">Torices · VIS</span>
+        <h3 class="c-name"><em>Entrelagos</em></h3>
+        <p class="c-desc">Certificación EDGE. Sostenibilidad real medida en ahorro de agua y energía para todos.</p>
+        <div class="c-foot">
+          <span class="c-loc">256 Apartamentos</span>
+          <div class="c-arr">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reserva 90 wide -->
+    <div class="card c-wide reveal">
+      <div class="swatch s-reserva"><div class="orb"></div></div>
+      <div class="pill">VIS · Zona Norte</div>
+      <div class="card-in" style="flex-direction:row;align-items:flex-end;gap:3rem;">
+        <div style="flex:1">
+          <span class="c-tag">Vía 90A · Zona Norte</span>
+          <h3 class="c-name">Reserva <em>90</em></h3>
+          <p class="c-desc">Arquitectura paisajística. Tres habitaciones, dos baños, balcón. Acceso a un estilo de vida digno y sofisticado.</p>
+        </div>
+        <div style="flex-shrink:0;text-align:right">
+          <span class="c-price" style="display:block;margin-bottom:.3rem;">Desde $299M</span>
+          <span class="c-loc" style="display:block;margin-bottom:1rem;">60.88m² · 3 Hab · 2 Baños</span>
+          <div class="c-arr" style="margin-left:auto;">→</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-divider reveal">
+  <blockquote>
+    "El lujo verdadero no se anuncia —<br>se <em>descubre</em> en silencio"
+  </blockquote>
+  <span class="quote-src">— María Auxi · Líder de Proyectos</span>
+</div>
+
+<!-- TECNOLOGÍA -->
+<section id="tecnologia">
+  <div>
+    <span class="tag reveal">— Tecnología Agéntica</span>
+    <h2 class="sec-title reveal" style="font-size:clamp(2rem,3.2vw,3.2rem);margin-bottom:1.5rem;">
+      Inteligencia que<br><em>anticipa</em> cada decisión
+    </h2>
+    <p class="reveal" style="font-size:.72rem;line-height:2;color:var(--text-lt);max-width:440px;">
+      Nuestra plataforma incorpora IA Agéntica que personaliza la experiencia de cada prospecto en tiempo real —agendando visitas y reduciendo el tiempo de primer contacto a menos de 90 segundos.
+    </p>
+    <div class="metrics reveal d2">
+      <div class="metric">
+        <span class="metric-v">4.6×</span>
+        <span class="metric-d">Aceleración en publicación de listados</span>
+      </div>
+      <div class="metric">
+        <span class="metric-v">&lt;90s</span>
+        <span class="metric-d">Tiempo de primer contacto</span>
+      </div>
+      <div class="metric">
+        <span class="metric-v">9×</span>
+        <span class="metric-d">Mayor conversión vs. contacto tardío</span>
+      </div>
+      <div class="metric">
+        <span class="metric-v">84%</span>
+        <span class="metric-d">Retención con narrativa de video</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-box reveal d3">
+    <div class="ai-row">
+      <div class="ai-node">Agente de Personalización</div>
+      <div class="ai-desc">Analiza el comportamiento del visitante y reordena el portafolio en tiempo real según sus intereses detectados.</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-node">Motor de Contacto</div>
+      <div class="ai-desc">Identifica el momento emocional óptimo para escalar la conversación a un agente humano en vivo.</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-node">Cumplimiento Legal by Design</div>
+      <div class="ai-desc">Algoritmos auditables que garantizan equidad en la personalización según estándares internacionales.</div>
+      <div class="ai-status">Sistema activo</div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIONES -->
+<section id="ubicaciones">
+  <div class="ubic-inner">
+    <div>
+      <span class="tag reveal">— Cartagena de Indias</span>
+      <h2 class="sec-title reveal" style="font-size:clamp(2rem,3.2vw,3.2rem);">
+        Cuatro zonas.<br><em>Un solo</em> estándar.
+      </h2>
+      <ul class="zones reveal">
+        <li class="zone">
+          <div class="zone-dot"></div>
+          <span class="zone-nm">Punta Canoa · Zona Norte</span>
+          <span class="zone-ct">1 proyecto</span>
+        </li>
+        <li class="zone">
+          <div class="zone-dot"></div>
+          <span class="zone-nm">Manga</span>
+          <span class="zone-ct">3 proyectos</span>
+        </li>
+        <li class="zone">
+          <div class="zone-dot"></div>
+          <span class="zone-nm">Serena del Mar</span>
+          <span class="zone-ct">1 proyecto</span>
+        </li>
+        <li class="zone">
+          <div class="zone-dot"></div>
+          <span class="zone-nm">Torices · VIS</span>
+          <span class="zone-ct">2 proyectos</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="map-art reveal d2">
+      <div class="map-c"></div><div class="map-c"></div>
+      <div class="map-c"></div><div class="map-c"></div><div class="map-c"></div>
+
+      <div class="map-pt" style="top:22%;left:65%"></div>
+      <div class="map-lbl" style="top:16%;left:70%">Punta Canoa</div>
+
+      <div class="map-pt" style="top:52%;left:55%"></div>
+      <div class="map-lbl" style="top:55%;left:60%">Manga</div>
+
+      <div class="map-pt" style="top:68%;left:32%"></div>
+      <div class="map-lbl" style="top:72%;left:6%">Serena del Mar</div>
+
+      <div class="map-pt" style="top:44%;left:44%"></div>
+      <div class="map-lbl" style="top:38%;left:10%">Torices</div>
+
+      <span class="map-tag">Cartagena de Indias, Colombia</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">María Auxi <em>· Líder de Proyectos</em></div>
+      <p class="ft-tagline">
+        Liderando experiencias residenciales de excelencia en el Caribe colombiano. Más de dos décadas definiendo el estándar de la arquitectura de lujo en Cartagena de Indias.
+      </p>
+      <div class="ft-social">
+        <a href="#" class="soc">in</a>
+        <a href="#" class="soc">ig</a>
+        <a href="#" class="soc">yt</a>
+      </div>
+    </div>
+    <div>
+      <p class="ft-col-t">Proyectos</p>
+      <ul class="ft-links">
+        <li><a href="#">Mar de Kairos</a></li>
+        <li><a href="#">Crystal Bay Tower</a></li>
+        <li><a href="#">Terra Club House</a></li>
+        <li><a href="#">Bari Club House</a></li>
+        <li><a href="#">Zinnia Club House</a></li>
+        <li><a href="#">Reserva 90</a></li>
+        <li><a href="#">Entrelagos</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ft-col-t">Compañía</p>
+      <ul class="ft-links">
+        <li><a href="#">Nuestra historia</a></li>
+        <li><a href="#">Filosofía de diseño</a></li>
+        <li><a href="#">Responsabilidad social</a></li>
+        <li><a href="#">Prensa</a></li>
+        <li><a href="#">Alianzas</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ft-col-t">Contacto</p>
+      <ul class="ft-links">
+        <li><a href="#">Cartagena de Indias</a></li>
+        <li><a href="tel:+573104325477">+57 310 432 5477</a></li>
+        <li><a href="mailto:proyectoentrelagos1@gmail.com">proyectoentrelagos1@gmail.com</a></li>
+        <li><a href="#">Agendar cita virtual</a></li>
+        <li><a href="#">Sala de ventas</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">© 2026 María Auxi — Líder de Proyectos. Todos los derechos reservados.</p>
+    <div class="ft-badge">Luxury Defined · Cartagena</div>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cur = document.getElementById('cur');
+  const ring = document.getElementById('cur-r');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY; cur.style.left=mx+'px';cur.style.top=my+'px'; });
+  (function loop(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+
+  // Reveal
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Nav on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>60){
+      nav.style.background='rgba(250,247,244,0.92)';
+      nav.style.backdropFilter='blur(16px)';
+      nav.style.borderBottom='1px solid rgba(196,150,154,0.15)';
+    } else {
+      nav.style.background='transparent';
+      nav.style.backdropFilter='none';
+      nav.style.borderBottom='none';
+    }
+  });
+
+  // Card tilt
+  document.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`translateY(-2px) rotateX(${-y*2.5}deg) rotateY(${x*2.5}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>{ card.style.transform='translateY(0) rotateX(0) rotateY(0)'; });
+  });
+</script>
+</body>
+</html>
