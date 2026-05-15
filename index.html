@@ -58,6 +58,7 @@ nav {
   border:none; padding:.65rem 1.7rem;
   background:#FFFFFF; transition:all .4s;
   cursor: pointer;
+  text-decoration: none;
 }
 .nav-cta:hover { background:#F0F0F0; }
 
@@ -72,7 +73,6 @@ nav {
   overflow: hidden;
 }
 
-/* Soft background wash */
 #hero::before {
   content:'';
   position:absolute; inset:0;
@@ -81,7 +81,6 @@ nav {
     radial-gradient(ellipse 50% 60% at 20% 70%, rgba(196,150,154,0.1) 0%, transparent 60%);
 }
 
-/* Thin decorative vertical line */
 .hero-line {
   position:absolute; top:0; left:50%;
   width:1px; height:100%;
@@ -132,7 +131,6 @@ nav {
 .btn-g:hover { color:var(--rose); }
 .btn-g:hover::after { width:55px; }
 
-/* Hero right — contact card */
 .hero-right {
   position:relative; z-index:2;
   display:flex; flex-direction:column; align-items:flex-end; gap:1.5rem;
@@ -169,7 +167,6 @@ nav {
 }
 .cc-phone:hover { color:var(--mauve); }
 
-/* Scroll indicator */
 .hero-scroll {
   position:absolute; bottom:2.5rem; left:5rem; z-index:2;
   display:flex; align-items:center; gap:1rem;
@@ -256,14 +253,12 @@ nav {
 }
 .sec-link:hover { color:var(--rose); }
 
-/* Grid */
 .grid {
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:14px;
 }
 
-/* Cards */
 .card {
   background:var(--white);
   border:1px solid var(--border);
@@ -282,7 +277,6 @@ nav {
 .c-wide  { grid-column:span 8; min-height:190px; }
 .c-fill  { grid-column:span 4; min-height:190px; }
 
-/* Card swatch — soft background per project */
 .swatch {
   position:absolute; inset:0;
   transition:transform .6s ease;
@@ -297,7 +291,6 @@ nav {
 .s-reserva   { background: linear-gradient(145deg,#EDEAE4,#E4E0D8,#EDEBE5); }
 .s-entre     { background: linear-gradient(145deg,#E4E8EC,#D8E0E6,#E3E8EE); }
 
-/* Soft orb per card */
 .orb {
   position:absolute; border-radius:50%;
   filter:blur(70px); opacity:.45;
@@ -315,7 +308,6 @@ nav {
 .s-reserva .orb { background:#C0B8A4; width:180px; height:180px; bottom:-20px; left:-20px; }
 .s-entre   .orb { background:#A8B8C8; width:200px; height:200px; top:-30px; right:20px; }
 
-/* Card inner */
 .card-in {
   position:relative; z-index:2;
   height:100%; min-height:inherit;
@@ -323,7 +315,6 @@ nav {
   justify-content:flex-end; padding:2rem;
 }
 
-/* Status pill */
 .pill {
   position:absolute; top:1.6rem; right:1.6rem; z-index:3;
   background:rgba(255,255,255,0.7);
@@ -370,7 +361,6 @@ nav {
   background:var(--rose); color:var(--white); border-color:var(--rose);
 }
 
-/* amenities */
 .amen {
   display:flex; flex-wrap:wrap; gap:.5rem .9rem;
   margin-bottom:1.2rem;
@@ -430,7 +420,6 @@ nav {
   color:var(--text-lt); line-height:1.7;
 }
 
-/* AI diagram */
 .ai-box {
   background:var(--white);
   border:1px solid var(--border);
@@ -492,46 +481,10 @@ nav {
   text-transform:uppercase; color:var(--rose-lt);
 }
 
-/* Map art */
 .map-art {
   height:420px; background:var(--white);
   border:1px solid var(--border);
-  display:flex; align-items:center; justify-content:center;
   position:relative; overflow:hidden;
-}
-.map-c {
-  position:absolute; border-radius:50%;
-  border:1px solid rgba(196,150,154,0.18);
-  top:50%; left:50%; transform:translate(-50%,-50%);
-}
-.map-c:nth-child(1){width:55px;  height:55px;  border-color:rgba(196,150,154,.5);}
-.map-c:nth-child(2){width:110px; height:110px;}
-.map-c:nth-child(3){width:170px; height:170px;}
-.map-c:nth-child(4){width:230px; height:230px;}
-.map-c:nth-child(5){width:300px; height:300px; border-color:rgba(196,150,154,.06);}
-
-.map-pt {
-  position:absolute; width:7px; height:7px;
-  background:var(--rose); border-radius:50%;
-  transform:translate(-50%,-50%);
-}
-.map-pt::after {
-  content:''; position:absolute; inset:-6px;
-  border:1px solid rgba(196,150,154,.4); border-radius:50%;
-  animation:ptPulse 3.2s ease-in-out infinite;
-}
-@keyframes ptPulse { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:0;transform:scale(2.5)} }
-
-.map-lbl {
-  position:absolute;
-  font-size:.5rem; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--rose-lt);
-  white-space:nowrap;
-}
-.map-tag {
-  position:absolute; bottom:1.4rem; left:1.4rem;
-  font-size:.52rem; letter-spacing:.28em;
-  text-transform:uppercase; color:var(--text-lt);
 }
 
 /* ── FOOTER ── */
@@ -595,7 +548,6 @@ footer {
 ::-webkit-scrollbar-track { background:var(--cream); }
 ::-webkit-scrollbar-thumb { background:var(--rose-lt); }
 
-/* Responsive */
 @media(max-width:900px){
   nav { padding:1.5rem 2rem; }
   .nav-links { display:none; }
@@ -767,11 +719,11 @@ footer {
       <div class="pill">Disponible · Lotes</div>
       <div class="card-in">
         <span class="c-tag">Punta Canoa · Zona Norte</span>
-        <h3 class="c-name">Mar de <em>Kairos</em></h3>
-        <p class="c-desc">Lotes aterrazados frente al Mar Caribe con acceso exclusivo al Kairos Beach Club a 9 metros del agua. Una experiencia topográfica sin precedentes en la costa norte de Cartagena.</p>
+        <h3 class="c-name">Country Club <em>House</em></h3>
+        <p class="c-desc">Exclusividad y naturaleza en armonía. Espacios diseñados para el bienestar y la convivencia en una de las zonas con mayor proyección de la ciudad.</p>
         <div class="c-foot">
           <span class="c-price">Desde $250M COP</span>
-          <span class="c-loc">200m² · Mar Caribe</span>
+          <span class="c-loc">Punta Canoa, Cartagena</span>
           <div class="c-arr">→</div>
         </div>
       </div>
@@ -886,7 +838,7 @@ footer {
       Inteligencia que<br><em>anticipa</em> cada decisión
     </h2>
     <p class="reveal" style="font-size:.72rem;line-height:2;color:var(--text-lt);max-width:440px;">
-      Nuestra plataforma incorpora IA Agéntica que personaliza la experiencia de cada prospecto en tiempo real —agendando visitas y reduciendo el tiempo de primer contacto a menos de 90 segundos.
+      Nuestra plataforma incorpora IA Agéntica que personaliza la experiencia de cada prospecto en tiempo real.
     </p>
     <div class="metrics reveal d2">
       <div class="metric">
@@ -911,15 +863,15 @@ footer {
   <div class="ai-box reveal d3">
     <div class="ai-row">
       <div class="ai-node">Agente de Personalización</div>
-      <div class="ai-desc">Analiza el comportamiento del visitante y reordena el portafolio en tiempo real según sus intereses detectados.</div>
+      <div class="ai-desc">Analiza el comportamiento del visitante y reordena el portafolio en tiempo real.</div>
     </div>
     <div class="ai-row">
       <div class="ai-node">Motor de Contacto</div>
-      <div class="ai-desc">Identifica el momento emocional óptimo para escalar la conversación a un agente humano en vivo.</div>
+      <div class="ai-desc">Identifica el momento óptimo para escalar la conversación a un agente humano.</div>
     </div>
     <div class="ai-row">
-      <div class="ai-node">Cumplimiento Legal by Design</div>
-      <div class="ai-desc">Algoritmos auditables que garantizan equidad en la personalización según estándares internacionales.</div>
+      <div class="ai-node">Sistemas Activos</div>
+      <div class="ai-desc">Algoritmos que garantizan equidad y transparencia en la comunicación.</div>
       <div class="ai-status">Sistema activo</div>
     </div>
   </div>
@@ -957,22 +909,7 @@ footer {
     </div>
 
     <div class="map-art reveal d2">
-      <div class="map-c"></div><div class="map-c"></div>
-      <div class="map-c"></div><div class="map-c"></div><div class="map-c"></div>
-
-      <div class="map-pt" style="top:22%;left:65%"></div>
-      <div class="map-lbl" style="top:16%;left:70%">Punta Canoa</div>
-
-      <div class="map-pt" style="top:52%;left:55%"></div>
-      <div class="map-lbl" style="top:55%;left:60%">Manga</div>
-
-      <div class="map-pt" style="top:68%;left:32%"></div>
-      <div class="map-lbl" style="top:72%;left:6%">Serena del Mar</div>
-
-      <div class="map-pt" style="top:44%;left:44%"></div>
-      <div class="map-lbl" style="top:38%;left:10%">Torices</div>
-
-      <span class="map-tag">Cartagena de Indias, Colombia</span>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125553.07661262332!2d-75.56455110996841!3d10.4582845428456!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x8ef625e795c0c97b%3A0xc6e4b9f2913e618!2sCartagena%20de%20Indias%2C%20Bol%C3%ADvar!5e0!3m2!1ses!2sco!4v1715789643521!5m2!1ses!2sco" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -982,7 +919,7 @@ footer {
     <div>
       <div class="ft-brand">María Auxi <em>· Líder de Proyectos</em></div>
       <p class="ft-tagline">
-        Liderando experiencias residenciales de excelencia en el Caribe colombiano. Más de dos décadas definiendo el estándar de la arquitectura de lujo en Cartagena de Indias.
+        Liderando experiencias residenciales de excelencia en el Caribe colombiano.
       </p>
       <div class="ft-social">
         <a href="#" class="soc">in</a>
@@ -993,7 +930,7 @@ footer {
     <div>
       <p class="ft-col-t">Proyectos</p>
       <ul class="ft-links">
-        <li><a href="#">Mar de Kairos</a></li>
+        <li><a href="#">Country Club House</a></li>
         <li><a href="#">Crystal Bay Tower</a></li>
         <li><a href="#">Terra Club House</a></li>
         <li><a href="#">Bari Club House</a></li>
@@ -1007,8 +944,6 @@ footer {
       <ul class="ft-links">
         <li><a href="#">Nuestra historia</a></li>
         <li><a href="#">Filosofía de diseño</a></li>
-        <li><a href="#">Responsabilidad social</a></li>
-        <li><a href="#">Prensa</a></li>
         <li><a href="#">Alianzas</a></li>
       </ul>
     </div>
@@ -1018,8 +953,6 @@ footer {
         <li><a href="#">Cartagena de Indias</a></li>
         <li><a href="tel:+573104325477">+57 310 432 5477</a></li>
         <li><a href="mailto:proyectoentrelagos1@gmail.com">proyectoentrelagos1@gmail.com</a></li>
-        <li><a href="#">Agendar cita virtual</a></li>
-        <li><a href="#">Sala de ventas</a></li>
       </ul>
     </div>
   </div>
@@ -1030,13 +963,11 @@ footer {
 </footer>
 
 <script>
-  // Reveal
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
   },{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // Nav on scroll
   const nav = document.querySelector('nav');
   window.addEventListener('scroll',()=>{
     if(window.scrollY>60){
@@ -1050,7 +981,6 @@ footer {
     }
   });
 
-  // Card tilt
   document.querySelectorAll('.card').forEach(card=>{
     card.addEventListener('mousemove',e=>{
       const r=card.getBoundingClientRect();
