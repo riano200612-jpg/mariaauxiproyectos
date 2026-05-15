@@ -8,16 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream:   #FAF7F4;
-  --cream2:  #F5F0EC;
+  --cream:   #FAFAF8;
+  --cream2:  #F5F4F0;
   --white:   #FFFFFF;
-  --rose:    #C4969A;
-  --rose-lt: #D9B8BB;
-  --rose-dk: #A87B7F;
-  --mauve:   #8C6D70;
-  --text:    #2A1E20;
-  --text-lt: #8B6B78;
-  --border:  rgba(196,150,154,0.18);
+  --rose:    #B8964A;
+  --rose-lt: #D4B870;
+  --rose-dk: #9A7C38;
+  --mauve:   #7A6840;
+  --text:    #4A4744;
+  --text-lt: #7A7470;
+  --border:  rgba(184,150,74,0.16);
   --f-serif: 'Cormorant Garamond', serif;
   --f-sans:  'Jost', sans-serif;
 }
@@ -59,11 +59,11 @@ nav {
 .nav-links a:hover { color:var(--rose); }
 .nav-cta {
   font-family:var(--f-sans); font-size:.58rem; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--rose);
-  border:1px solid var(--rose-lt); padding:.65rem 1.7rem;
-  background:transparent; cursor:none; transition:all .4s;
+  text-transform:uppercase; color:#fff;
+  border:1px solid #1A1A1A; padding:.65rem 1.7rem;
+  background:#1A1A1A; cursor:none; transition:all .4s;
 }
-.nav-cta:hover { background:var(--rose); color:var(--white); border-color:var(--rose); }
+.nav-cta:hover { background:#333; border-color:#333; }
 
 /* ── HERO ── */
 #hero {
@@ -647,8 +647,7 @@ footer {
     <p class="hero-eyebrow">Cartagena de Indias · Proyectos Residenciales</p>
     <h1 class="hero-title">
       Espacios que<br>
-      <em>elocuentes</em><br>
-      hablan solos
+      <em>transforman</em>
     </h1>
     <p class="hero-sub">
       Portafolio de desarrollos residenciales de alto nivel en el corazón del Caribe colombiano.
@@ -746,6 +745,41 @@ footer {
         Oporto es la más reciente apuesta de Mejía Villegas Constructores — un proyecto que fusiona arquitectura contemporánea, ubicación estratégica y la esencia vibrante del Caribe colombiano en cada detalle.
       </p>
       <a href="https://wa.me/573104325477" target="_blank" class="btn-p" style="display:inline-block;">Más información</a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MARÍA AUXI -->
+<section style="padding:0 5rem 7rem;max-width:1200px;margin:0 auto;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+    <div>
+      <span class="tag reveal">— María Auxi · Líder de Proyectos</span>
+      <h2 class="sec-title reveal" style="font-size:clamp(2rem,3.2vw,3.2rem);margin-bottom:1.5rem;">
+        La persona detrás<br>de cada <em>proyecto</em>
+      </h2>
+      <p class="reveal" style="font-size:.72rem;line-height:2;color:var(--text-lt);max-width:380px;">
+        Con más de 25 años liderando desarrollos residenciales en Cartagena de Indias, María Auxi combina visión estratégica, sensibilidad estética y un profundo conocimiento del mercado inmobiliario del Caribe colombiano.
+      </p>
+    </div>
+    <div class="reveal" style="display:flex;justify-content:center;">
+      <div style="position:relative;width:300px;height:533px;overflow:hidden;box-shadow:0 20px 60px rgba(138,109,112,0.18);border:1px solid var(--border);">
+        <iframe
+          src="https://www.youtube.com/embed/p3Op7Trjp4o?autoplay=1&mute=1&loop=1&playlist=p3Op7Trjp4o&controls=1"
+          title="María Auxi · Líder de Proyectos"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="width:100%;height:100%;display:block;">
+        </iframe>
+        <div style="position:absolute;top:1.4rem;left:1.4rem;right:1.4rem;display:flex;justify-content:space-between;align-items:center;pointer-events:none;">
+          <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(196,168,76,0.25);padding:.38rem 1rem;">
+            <span style="font-size:.46rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,0.85);">Descubre</span>
+          </div>
+          <div style="background:rgba(196,168,76,0.15);backdrop-filter:blur(10px);border:1px solid rgba(196,168,76,0.3);padding:.38rem 1rem;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;font-weight:300;color:rgba(255,255,255,0.92);">Cartagena</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
