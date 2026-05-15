@@ -1,4 +1,3 @@
-HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,12 +31,7 @@ body {
   font-family: var(--f-sans);
   font-weight: 300;
   overflow-x: hidden;
-  cursor: none;
 }
-
-/* ── CURSOR ── */
-#cur  { position:fixed; width:7px; height:7px; background:var(--rose); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition: width .3s, height .3s; }
-#cur-r{ position:fixed; width:34px; height:34px; border:1px solid rgba(196,150,154,0.5); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition: all .15s ease-out; }
 
 /* ── NAV ── */
 nav {
@@ -60,11 +54,12 @@ nav {
 .nav-links a:hover { color:var(--rose); }
 .nav-cta {
   font-family:var(--f-sans); font-size:.58rem; letter-spacing:.22em;
-  text-transform:uppercase; color:#fff;
-  border:1px solid #1A1A1A; padding:.65rem 1.7rem;
-  background:#1A1A1A; cursor:none; transition:all .4s;
+  text-transform:uppercase; color:#000000;
+  border:none; padding:.65rem 1.7rem;
+  background:#FFFFFF; transition:all .4s;
+  cursor: pointer;
 }
-.nav-cta:hover { background:#333; border-color:#333; }
+.nav-cta:hover { background:#F0F0F0; }
 
 /* ── HERO ── */
 #hero {
@@ -124,7 +119,7 @@ nav {
   font-family:var(--f-sans); font-size:.58rem; letter-spacing:.22em;
   text-transform:uppercase; color:var(--white);
   background:var(--rose); border:none;
-  padding:1rem 2.6rem; cursor:none; text-decoration:none;
+  padding:1rem 2.6rem; text-decoration:none;
   display:inline-block; transition:background .4s;
 }
 .btn-p:hover { background:var(--mauve); }
@@ -274,7 +269,6 @@ nav {
   border:1px solid var(--border);
   overflow:hidden; position:relative;
   transition:border-color .4s, box-shadow .4s;
-  cursor:none;
 }
 .card:hover {
   border-color:rgba(196,150,154,0.4);
@@ -482,7 +476,7 @@ nav {
 .zone {
   display:flex; align-items:center; gap:1.5rem;
   padding:1.1rem 0; border-bottom:1px solid var(--border);
-  transition:border-color .3s; cursor:none;
+  transition:border-color .3s;
 }
 .zone:hover { border-color:rgba(196,150,154,0.38); }
 .zone-dot {
@@ -625,9 +619,6 @@ footer {
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-r"></div>
-
 <nav>
   <a href="#" class="nav-logo">María Auxi <em>·</em> Líder de Proyectos</a>
   <ul class="nav-links">
@@ -717,7 +708,7 @@ footer {
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
     <div class="reveal" style="display:flex;justify-content:center;">
       <div style="position:relative;width:300px;height:533px;overflow:hidden;box-shadow:0 20px 60px rgba(138,109,112,0.22);background:#1a1014;">
-        <video src="video3.mp4" autoplay loop muted playsinline style="width:100%; height:100%; display:block; object-fit:cover;"></video>
+        <video src="video3.mp4" autoplay loop playsinline controls style="width:100%; height:100%; display:block; object-fit:cover;"></video>
         <div style="position:absolute;top:1.2rem;right:1.2rem;background:rgba(196,150,154,0.15);backdrop-filter:blur(10px);border:1px solid rgba(196,150,154,0.3);padding:.35rem .9rem;pointer-events:none;">
           <span style="font-size:.48rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,0.85);">Disponible</span>
         </div>
@@ -749,7 +740,7 @@ footer {
     </div>
     <div class="reveal" style="display:flex;justify-content:center;">
       <div style="position:relative;width:300px;height:533px;overflow:hidden;box-shadow:0 20px 60px rgba(138,109,112,0.18);border:1px solid var(--border);">
-        <video src="mariaauxi.mp4" autoplay loop muted playsinline style="width:100%; height:100%; display:block; object-fit:cover;"></video>
+        <video src="mari.mp4" autoplay loop playsinline controls style="width:100%; height:100%; display:block; object-fit:cover;"></video>
         <div style="position:absolute;top:1.4rem;left:1.4rem;right:1.4rem;display:flex;justify-content:space-between;align-items:center;pointer-events:none;">
           <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(196,168,76,0.25);padding:.38rem 1rem;">
             <span style="font-size:.46rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,0.85);">Descubre</span>
@@ -950,7 +941,7 @@ footer {
         <li class="zone">
           <div class="zone-dot"></div>
           <span class="zone-nm">Manga</span>
-          <span class="zone-ct">3 projects</span>
+          <span class="zone-ct">3 proyectos</span>
         </li>
         <li class="zone">
           <div class="zone-dot"></div>
@@ -1039,13 +1030,6 @@ footer {
 </footer>
 
 <script>
-  // Cursor
-  const cur = document.getElementById('cur');
-  const ring = document.getElementById('cur-r');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY; cur.style.left=mx+'px';cur.style.top=my+'px'; });
-  (function loop(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
-
   // Reveal
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
