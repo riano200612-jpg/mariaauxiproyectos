@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -122,6 +122,16 @@ nav {
   display:inline-block; transition:background .4s;
 }
 .btn-p:hover { background:var(--mauve); }
+
+.btn-outline {
+  font-family:var(--f-sans); font-size:.58rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--white);
+  background:transparent; border:1px solid var(--rose-lt);
+  padding:1rem 2.6rem; text-decoration:none;
+  display:inline-block; transition:all .4s;
+}
+.btn-outline:hover { background:var(--rose-lt); color:#000000; }
+
 .btn-g {
   font-size:.58rem; letter-spacing:.22em; text-transform:uppercase;
   color:var(--text-lt); text-decoration:none; display:flex;
@@ -234,6 +244,67 @@ nav {
   font-size:.72rem; line-height:2; color:var(--text-lt);
 }
 
+/* ── CAMPAÑA INVERSIÓN ── */
+#inversion-cartagena {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 2rem 0 6rem 0;
+}
+#cartagena-vid {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.overlay-dark {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(20,15,10,0.35), rgba(20,15,10,0.65));
+  z-index: 2;
+}
+.inversion-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: var(--white);
+  padding: 0 2rem;
+  max-width: 800px;
+}
+.sound-toggle {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 4rem;
+  z-index: 4;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-family: var(--f-sans);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+.sound-toggle:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ── OPORTO VIDEO ── */
+#oporto { padding:4rem 5rem 7rem; max-width:1200px; margin:0 auto; }
+
 /* ── PROYECTOS ── */
 #proyectos { padding:3rem 5rem 8rem; }
 
@@ -290,6 +361,8 @@ nav {
 .s-zinnia    { background: linear-gradient(145deg,#E8EAE4,#DDE1D8,#E8EADF); }
 .s-reserva   { background: linear-gradient(145deg,#EDEAE4,#E4E0D8,#EDEBE5); }
 .s-entre     { background: linear-gradient(145deg,#E4E8EC,#D8E0E6,#E3E8EE); }
+.s-itaca     { background: linear-gradient(145deg,#E6EBEF,#D9E0E6,#E5E9EE); }
+.s-marduk    { background: linear-gradient(145deg,#EFEAE6,#E6DFDA,#EFECE9); }
 
 .orb {
   position:absolute; border-radius:50%;
@@ -307,6 +380,8 @@ nav {
 .s-zinnia  .orb { background:#B0BC9C; width:200px; height:200px; top:-40px; left:40%; }
 .s-reserva .orb { background:#C0B8A4; width:180px; height:180px; bottom:-20px; left:-20px; }
 .s-entre   .orb { background:#A8B8C8; width:200px; height:200px; top:-30px; right:20px; }
+.s-itaca   .orb { background:#B0C4DE; width:250px; height:250px; top:-50px; left:-50px; }
+.s-marduk  .orb { background:#DDBCA0; width:220px; height:220px; bottom:-30px; right:-30px; }
 
 .card-in {
   position:relative; z-index:2;
@@ -557,6 +632,8 @@ footer {
   .stats { grid-template-columns:repeat(2,1fr); padding:2rem; gap:2rem; }
   #manifesto { padding:5rem 2rem; }
   .manifesto-foot { grid-template-columns:1fr; }
+  #inversion-cartagena { height: 60vh; min-height: 400px; margin: 2rem 0; }
+  .sound-toggle { bottom: 1.5rem; right: 1.5rem; }
   #proyectos { padding:2rem 2rem 5rem; }
   .grid { grid-template-columns:repeat(6,1fr); }
   .c-xl,.c-lg,.c-md,.c-sm,.c-wide,.c-fill { grid-column:span 6; }
@@ -652,7 +729,28 @@ footer {
   </div>
 </section>
 
-<section id="oporto" style="padding:4rem 5rem 7rem;max-width:1200px;margin:0 auto;">
+<section id="inversion-cartagena" class="reveal">
+  <video id="cartagena-vid" src="cartagena fl.mp4" autoplay loop muted playsinline></video>
+  <div class="overlay-dark"></div>
+
+  <button id="sound-btn" class="sound-toggle">
+    <span>Activar sonido</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+  </button>
+
+  <div class="inversion-content">
+    <span style="font-size:.55rem; letter-spacing:.45em; text-transform:uppercase; color:var(--rose-lt); margin-bottom:1.5rem; display:block;">— Oportunidad de Inversión</span>
+    <h2 style="font-family:var(--f-serif); font-size:clamp(2.5rem, 4vw, 4rem); font-weight:300; line-height:1.2; margin-bottom:1.5rem;">
+      Cartagena de Indias:<br><em>El valor de lo eterno</em>
+    </h2>
+    <p style="font-size:.75rem; line-height:1.9; color:rgba(255,255,255,0.9); margin:0 auto 2.5rem; font-weight:300;">
+      Asegura tu patrimonio en la ciudad más exclusiva y con mayor proyección del Caribe colombiano. Un estilo de vida inigualable respaldado por una alta valorización en finca raíz.
+    </p>
+    <a href="https://wa.me/573104325477" target="_blank" class="btn-outline">Invertir ahora</a>
+  </div>
+</section>
+
+<section id="oporto">
   <div class="sec-head reveal">
     <h2 class="sec-title">Proyecto <em>Oporto</em></h2>
     <span class="sec-link" style="color:var(--rose-lt);font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;">Nuevo · 2026</span>
@@ -672,7 +770,7 @@ footer {
         Una nueva forma de<br><em style="color:var(--rose-lt);font-style:italic;">vivir en Cartagena</em>
       </p>
       <p style="font-size:.72rem;line-height:2;color:var(--text-lt);margin-bottom:2.5rem;">
-        Oporto es la más reciente apuesta de Mejía Villegas Constructores — un proyecto que fusiona arquitectura contemporánea, ubicación estratégica y la esencia vibrante del Caribe colombiano en cada detalle.
+        Oporto es la más reciente apuesta de Mejía Villegas Constructores — un proyecto que fusiona arquitectura contemporánea, ubicación estratégica al costado del museo naval y la esencia vibrante del Caribe colombiano en cada detalle.
       </p>
       <a href="https://wa.me/573104325477" target="_blank" class="btn-p" style="display:inline-block;">Más información</a>
     </div>
@@ -716,7 +814,7 @@ footer {
 
     <div class="card c-xl reveal">
       <div class="swatch s-kairos"><div class="orb"></div></div>
-      <div class="pill">Disponible · Lotes</div>
+      <div class="pill">Entrega Inmediata</div>
       <div class="card-in">
         <span class="c-tag">Punta Canoa · Zona Norte</span>
         <h3 class="c-name">Country Club <em>House</em></h3>
@@ -821,6 +919,40 @@ footer {
       </div>
     </div>
 
+    <div class="card c-xl reveal d1">
+      <div class="swatch s-itaca"><div class="orb"></div></div>
+      <div class="pill">Libro Digital · PDF</div>
+      <div class="card-in">
+        <span class="c-tag">Manga · Residencial</span>
+        <h3 class="c-name">Ítaca <em>Tower</em></h3>
+        <p class="c-desc">El mejor estilo de vida en todo sentido. Apartamentos desde 81m² con interiores contemporáneos, piscina panorámica y amenidades exclusivas.</p>
+        <div class="c-foot">
+          <span class="c-price" style="color:var(--text); font-size:1rem;">Ver Brochure</span>
+          <span class="c-loc">Descarga instantánea</span>
+          <a href="Itaca Tower Book _digital_2024.pdf" target="_blank" class="c-arr" style="text-decoration:none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card c-lg reveal d2">
+      <div class="swatch s-marduk"><div class="orb"></div></div>
+      <div class="pill">Libro Digital · PDF</div>
+      <div class="card-in">
+        <span class="c-tag">Manga · 2da Avenida</span>
+        <h3 class="c-name">Marduk <em>Tower</em></h3>
+        <p class="c-desc">Exclusivos espacios que se adaptan a ti. Apartamentos modernos desde 61.5m² con diseño arquitectónico versátil y helipuerto privado.</p>
+        <div class="c-foot">
+          <span class="c-price" style="color:var(--text); font-size:1rem;">Ver Brochure</span>
+          <span class="c-loc">Descarga instantánea</span>
+          <a href="Marduk Book_digital_2026 .pdf" target="_blank" class="c-arr" style="text-decoration:none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -846,7 +978,7 @@ footer {
         <span class="metric-d">Aceleración en publicación de listados</span>
       </div>
       <div class="metric">
-        <span class="metric-v">&lt;90s</span>
+        <span class="metric-v"><90s</span>
         <span class="metric-d">Tiempo de primer contacto</span>
       </div>
       <div class="metric">
@@ -909,7 +1041,7 @@ footer {
     </div>
 
     <div class="map-art reveal d2">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125553.07661262332!2d-75.56455110996841!3d10.4582845428456!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x8ef625e795c0c97b%3A0xc6e4b9f2913e618!2sCartagena%20de%20Indias%2C%20Bol%C3%ADvar!5e0!3m2!1ses!2sco!4v1715789643521!5m2!1ses!2sco" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="http://googleusercontent.com/maps.google.com/4" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -963,11 +1095,13 @@ footer {
 </footer>
 
 <script>
+  // Revelar elementos al hacer scroll
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
   },{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+  // Cambiar fondo de la navegación al bajar
   const nav = document.querySelector('nav');
   window.addEventListener('scroll',()=>{
     if(window.scrollY>60){
@@ -981,6 +1115,7 @@ footer {
     }
   });
 
+  // Efecto 3D en las tarjetas de proyectos
   document.querySelectorAll('.card').forEach(card=>{
     card.addEventListener('mousemove',e=>{
       const r=card.getBoundingClientRect();
@@ -990,6 +1125,22 @@ footer {
     });
     card.addEventListener('mouseleave',()=>{ card.style.transform='translateY(0) rotateX(0) rotateY(0)'; });
   });
+
+  // Botón para Activar/Silenciar sonido del video principal
+  const soundBtn = document.getElementById('sound-btn');
+  const cartagenaVid = document.getElementById('cartagena-vid');
+  
+  if(soundBtn && cartagenaVid) {
+    soundBtn.addEventListener('click', () => {
+      if(cartagenaVid.muted) {
+        cartagenaVid.muted = false;
+        soundBtn.innerHTML = `<span>Silenciar</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>`;
+      } else {
+        cartagenaVid.muted = true;
+        soundBtn.innerHTML = `<span>Activar sonido</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
+      }
+    });
+  }
 </script>
 </body>
 </html>
