@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -244,7 +244,7 @@ nav {
   font-size:.72rem; line-height:2; color:var(--text-lt);
 }
 
-/* ── CAMPAÑA INVERSIÓN ── */
+/* ── CAMPAÑA INVERSIÓN (FONDO YOUTUBE) ── */
 #inversion-cartagena {
   position: relative;
   width: 100%;
@@ -256,12 +256,25 @@ nav {
   overflow: hidden;
   margin: 2rem 0 6rem 0;
 }
-#cartagena-vid {
+/* Estilos para que YouTube actúe como fondo cover */
+.video-background {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  object-fit: cover;
+  overflow: hidden;
   z-index: 1;
+  pointer-events: none; /* Bloquea clics para que no te lleve a YouTube */
+}
+.video-background iframe {
+  width: 100vw;
+  height: 56.25vw;
+  min-height: 100vh;
+  min-width: 177.77vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
 }
 .overlay-dark {
   position: absolute;
@@ -730,7 +743,9 @@ footer {
 </section>
 
 <section id="inversion-cartagena" class="reveal">
-  <video id="cartagena-vid" src="cartagena fl.mp4" autoplay loop muted playsinline></video>
+  <div class="video-background">
+    <div id="youtube-player"></div>
+  </div>
   <div class="overlay-dark"></div>
 
   <button id="sound-btn" class="sound-toggle">
@@ -929,7 +944,7 @@ footer {
         <div class="c-foot">
           <span class="c-price" style="color:var(--text); font-size:1rem;">Ver Brochure</span>
           <span class="c-loc">Descarga instantánea</span>
-          <a href="Itaca Tower Book _digital_2024.pdf" target="_blank" class="c-arr" style="text-decoration:none;">
+          <a href="Itaca%20Tower%20Book%20_digital_2024.pdf" target="_blank" class="c-arr" style="text-decoration:none;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </a>
         </div>
@@ -946,7 +961,7 @@ footer {
         <div class="c-foot">
           <span class="c-price" style="color:var(--text); font-size:1rem;">Ver Brochure</span>
           <span class="c-loc">Descarga instantánea</span>
-          <a href="Marduk Book_digital_2026 .pdf" target="_blank" class="c-arr" style="text-decoration:none;">
+          <a href="Marduk%20Book_digital_2026%20.pdf" target="_blank" class="c-arr" style="text-decoration:none;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </a>
         </div>
@@ -978,7 +993,7 @@ footer {
         <span class="metric-d">Aceleración en publicación de listados</span>
       </div>
       <div class="metric">
-        <span class="metric-v"><90s</span>
+        <span class="metric-v">&lt;90s</span>
         <span class="metric-d">Tiempo de primer contacto</span>
       </div>
       <div class="metric">
@@ -1041,7 +1056,7 @@ footer {
     </div>
 
     <div class="map-art reveal d2">
-      <iframe src="http://googleusercontent.com/maps.google.com/4" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125553.07639535316!2d-75.56839352932371!3d10.400194852904666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef625e174b28891%3A0x1d44747ebafce504!2sCartagena%20de%20Indias%2C%20Provincia%20de%20Cartagena%2C%20Bol%C3%ADvar!5e0!3m2!1ses!2sco!4v1715873995892!5m2!1ses!2sco" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -1126,18 +1141,54 @@ footer {
     card.addEventListener('mouseleave',()=>{ card.style.transform='translateY(0) rotateX(0) rotateY(0)'; });
   });
 
-  // Botón para Activar/Silenciar sonido del video principal
+  // Integración de YouTube API para control de sonido en el fondo
+  let ytPlayer;
+  function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('youtube-player', {
+      videoId: 'bYfm1XbgPCA',
+      playerVars: {
+        'autoplay': 1,
+        'controls': 0,
+        'disablekb': 1,
+        'loop': 1,
+        'playlist': 'bYfm1XbgPCA',
+        'modestbranding': 1,
+        'mute': 1,
+        'playsinline': 1,
+        'rel': 0,
+        'showinfo': 0
+      },
+      events: {
+        'onReady': function(event) {
+          event.target.playVideo();
+          event.target.mute();
+        }
+      }
+    });
+  }
+
+  // Cargar el Script de YouTube
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Funcionalidad del Botón de Sonido
   const soundBtn = document.getElementById('sound-btn');
-  const cartagenaVid = document.getElementById('cartagena-vid');
+  let isMuted = true;
   
-  if(soundBtn && cartagenaVid) {
+  if(soundBtn) {
     soundBtn.addEventListener('click', () => {
-      if(cartagenaVid.muted) {
-        cartagenaVid.muted = false;
-        soundBtn.innerHTML = `<span>Silenciar</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>`;
-      } else {
-        cartagenaVid.muted = true;
-        soundBtn.innerHTML = `<span>Activar sonido</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
+      if(ytPlayer && ytPlayer.unMute) {
+        if(isMuted) {
+          ytPlayer.unMute();
+          isMuted = false;
+          soundBtn.innerHTML = `<span>Silenciar</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>`;
+        } else {
+          ytPlayer.mute();
+          isMuted = true;
+          soundBtn.innerHTML = `<span>Activar sonido</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
+        }
       }
     });
   }
